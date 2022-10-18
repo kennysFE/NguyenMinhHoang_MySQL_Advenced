@@ -1,0 +1,70 @@
+--create table user
+CREATE TABLE users(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    full_name VARCHAR(255),
+    email VARCHAR(255),
+    password VARCHAR(255)
+)
+
+--create table restaurant
+CREATE TABLE restaurant(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    res_name VARCHAR(255),
+    image VARCHAR(255),
+    descri VARCHAR(255)
+)
+
+--create table food_type
+CREATE TABLE foodType(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    type_name VARCHAR(255)
+)
+
+--create table food
+CREATE TABLE food(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    food_name VARCHAR(255),
+    image VARCHAR(255), 
+    price VARCHAR(255),
+    descri VARCHAR(255)
+    type_id INT,
+    FOREIGN KEY (type_id) REFERENCES foodType(id)
+)
+
+--create table rate_res
+CREATE TABLE rateRes(
+    user_id INT,
+    res_id INT,
+    amount INT,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (res_id) REFERENCES restaurant(id)
+)
+
+--create table rate_res
+CREATE TABLE rateRes(
+    user_id INT,
+    res_id INT,
+    amount INT,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (res_id) REFERENCES restaurant(id)
+)
+
+--create table order
+CREATE TABLE rateRes(
+    user_id INT,
+    food_id INT,
+    amount INT,
+    code VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (food_id) REFERENCES food(id)
+)
+
+--create table sub_food
+CREATE TABLE subFood(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    food_id INT,
+    sub_name VARCHAR(255),
+    sub_price FLOAT,
+    FOREIGN KEY (food_id) REFERENCES food(id),
+    arr_sub_id VARCHAR(255)
+)
